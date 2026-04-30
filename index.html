@@ -3,215 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chetan Holiyappa | Global Talent Partner</title>
+<title>Chetan Holiyappa | AI Talent Architect</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #020617;
-  color: #e2e8f0;
+:root{
+  --bg:#020617; --card:#0f172a; --muted:#94a3b8;
+  --accent:#38bdf8; --accent2:#6366f1;
 }
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui;background:radial-gradient(circle at top,#020617,#000);color:#e2e8f0}
 
-/* HERO */
-header {
-  text-align: center;
-  padding: 120px 20px;
-  background: radial-gradient(circle at top, #1d4ed8, #020617);
-}
+/* glow headline */
+.glow{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent}
 
-h1 {
-  font-size: 3rem;
-}
+/* layout */
+header{text-align:center;padding:110px 20px}
+.section{max-width:1100px;margin:auto;padding:70px 20px}
 
-.tagline {
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
+/* button */
+.btn{padding:12px 20px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+border-radius:10px;color:#fff;text-decoration:none;display:inline-block;transition:.25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(56,189,248,.35)}
 
-/* SECTION */
-.section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 60px 20px;
-}
+/* grid + card */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);padding:22px;border-radius:14px;line-height:1.6;transition:.25s;position:relative}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 20px rgba(56,189,248,.18)}
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 20px;
-}
+/* bars */
+.bar{height:10px;background:#1e293b;border-radius:6px;margin:6px 0 16px}
+.fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;border-radius:6px;transition:1.2s}
 
-/* CARD */
-.card {
-  background: #0f172a;
-  padding: 20px;
-  border-radius: 12px;
-  transition: 0.3s;
-}
+/* tags */
+.tag{display:inline-block;background:#1e293b;padding:6px 10px;border-radius:6px;margin:5px;font-size:.85rem}
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(59,130,246,0.3);
-}
+/* tabs */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.tab{padding:8px 12px;border-radius:8px;background:#111827;color:#cbd5f5;cursor:pointer}
+.tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.tab-content{display:none}
+.tab-content.active{display:block}
 
-/* METRIC */
-.metric {
-  font-size: 2rem;
-  color: #38bdf8;
-}
+/* accordion */
+.acc{border-radius:12px;overflow:hidden}
+.acc-item{margin-bottom:10px}
+.acc-btn{width:100%;text-align:left;padding:14px;background:#0b1222;border:none;color:#e2e8f0;cursor:pointer;border-radius:10px}
+.acc-content{max-height:0;overflow:hidden;transition:max-height .35s ease;background:rgba(255,255,255,.04);padding:0 14px;border-radius:10px}
+.acc-content p{padding:10px 0}
 
-/* TIMELINE */
-.timeline {
-  border-left: 2px solid #3b82f6;
-  padding-left: 20px;
-}
+/* subtle reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:.5s}
+.reveal.show{opacity:1;transform:none}
 
-.timeline-item {
-  margin-bottom: 30px;
-}
-
-/* BUTTON */
-.btn {
-  padding: 12px 20px;
-  background: #3b82f6;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-}
-
-/* BADGE */
-.badge {
-  display: inline-block;
-  background: #1e293b;
-  padding: 6px 10px;
-  border-radius: 6px;
-  margin: 5px;
-  font-size: 0.9rem;
-}
+/* modal */
+#resumeModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center;z-index:9999}
+.modal{width:92%;height:90%;background:#020617;border-radius:14px;overflow:hidden;position:relative}
+.close{position:absolute;top:10px;right:12px;background:#ef4444;color:#fff;border:none;border-radius:8px;padding:8px 10px;cursor:pointer}
+.dl{position:absolute;top:10px;left:12px;background:#3b82f6;color:#fff;border-radius:8px;padding:8px 10px;text-decoration:none}
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Chetan Holiyappa</h1>
-  <p class="tagline">Global Talent Partner | AI-Driven Hiring | APAC & EMEA Specialist</p>
-  <a href="resume.pdf" class="btn">Download Resume</a>
+<header class="reveal">
+  <h1 class="glow">Chetan Holiyappa</h1>
+  <p>AI-Driven Talent Partner | Building scalable, data-driven hiring systems across global markets</p>
+  <a href="#" class="btn" onclick="openResume()">View Resume ↗</a>
 </header>
 
-<section class="section">
-<h2>Why Hire Me</h2>
-<div class="grid">
+<!-- IMPACT -->
+<section class="section reveal">
+  <h2 class="glow">Impact & Outcomes</h2>
+  <div class="card">
+    <p><b>Offer Acceptance Rate (95%)</b></p>
+    <p>Improved offer acceptance through alignment of hiring strategy with candidate expectations, compensation benchmarking, and stakeholder alignment.</p>
+    <div class="bar"><div class="fill" data-width="95%"></div></div>
 
-<div class="card">
-<div class="metric">95%</div>
-<p>Offer acceptance through structured hiring & stakeholder alignment</p>
-</div>
+    <p><b>Efficiency Improvement (~40%)</b></p>
+    <p>Reduction in manual recruiter effort via ATS automation (Lever workflows), structured pipelines, and workflow optimization.</p>
+    <div class="bar"><div class="fill" data-width="40%"></div></div>
 
-<div class="card">
-<div class="metric">40%</div>
-<p>Reduction in manual effort via ATS automation (Lever workflows)</p>
-</div>
-
-<div class="card">
-<div class="metric">20%</div>
-<p>Increase in diversity hiring through targeted sourcing strategies</p>
-</div>
-
-<div class="card">
-<div class="metric">10+ yrs</div>
-<p>Global hiring experience across SaaS, product, and tech roles</p>
-</div>
-
-</div>
+    <p><b>Diversity Hiring (+20%)</b></p>
+    <p>Inclusive hiring enabled through targeted sourcing, vendor partnerships, and data-backed talent mapping.</p>
+    <div class="bar"><div class="fill" data-width="20%"></div></div>
+  </div>
 </section>
 
-<section class="section">
-<h2>Core Strengths</h2>
-
-<div class="card">
-<span class="badge">AI-Assisted Hiring (ChatGPT, Juicebox)</span>
-<span class="badge">Global Hiring (APAC & EMEA)</span>
-<span class="badge">ATS Optimization (Lever, Greenhouse)</span>
-<span class="badge">Talent Intelligence (Power BI, Talent Neuron)</span>
-<span class="badge">Stakeholder Management</span>
-<span class="badge">Employer Branding & SEO JD Optimization</span>
-<span class="badge">Pipeline Building & Direct Sourcing</span>
-</div>
-
+<!-- TRANSFORMATION -->
+<section class="section reveal">
+  <h2 class="glow">Hiring Transformation</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Before</h3>
+      <p>Fragmented processes, high drop-offs, inconsistent pipelines</p>
+      <p>Heavy manual effort with limited automation</p>
+      <p>Reactive sourcing, minimal market intelligence</p>
+    </div>
+    <div class="card">
+      <h3>After</h3>
+      <p>Structured workflows with predictable pipeline outcomes</p>
+      <p>AI-assisted sourcing, screening, and recruiter productivity</p>
+      <p>Data-driven decisions aligned to business goals</p>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<h2>Career Progression</h2>
+<!-- EXPERIENCE (TABS) -->
+<section class="section reveal">
+  <h2 class="glow">Professional Experience</h2>
 
-<div class="timeline">
+  <div class="tabs">
+    <div class="tab active" data-tab="r">Resilinc</div>
+    <div class="tab" data-tab="m">Mitratech</div>
+    <div class="tab" data-tab="t">TomTom</div>
+    <div class="tab" data-tab="k">KellyOCG</div>
+    <div class="tab" data-tab="e">Early Career</div>
+  </div>
 
-<div class="timeline-item">
-<h3>Resilinc — Global TA Partner (2024–Present)</h3>
-<p>Driving AI-integrated hiring workflows, automation, and global recruitment strategy across product & engineering roles.</p>
-</div>
+  <div id="r" class="tab-content active card">
+    <p><b>Resilinc — Global Talent Partner</b></p>
+    <p>End-to-end hiring across product, engineering, and design in a SaaS environment. Integration of AI-assisted workflows (ChatGPT, Juicebox) to enhance efficiency.</p>
+    <p>Structured pipelines, improved consistency, and ATS automation to streamline candidate experience and recruiter productivity.</p>
+  </div>
 
-<div class="timeline-item">
-<h3>Mitratech — Senior Recruiter (2023)</h3>
-<p>Handled mid to senior hiring across full stack, .NET, automation, and product roles with strong pipeline execution.</p>
-</div>
+  <div id="m" class="tab-content card">
+    <p><b>Mitratech — Senior Recruiter</b></p>
+    <p>Mid to senior hiring across full stack, .NET, automation testing, and product roles. Ownership of sourcing, screening, stakeholder coordination, and offer management.</p>
+  </div>
 
-<div class="timeline-item">
-<h3>TomTom — Talent Acquisition Specialist (2020–2022)</h3>
-<p>Managed APAC & EMEA hiring, improved offer acceptance to 95% and reduced drop ratio from 40% to 10%.</p>
-</div>
+  <div id="t" class="tab-content card">
+    <p><b>TomTom — Talent Acquisition Specialist (APAC & EMEA)</b></p>
+    <p>Global hiring across APAC and EMEA. Drop ratio reduced from 40% to 10% with ~95% offer acceptance.</p>
+    <p>Diversity hiring strengthened through targeted sourcing strategies.</p>
+  </div>
 
-<div class="timeline-item">
-<h3>KellyOCG — Senior IT Recruiter (2019–2021)</h3>
-<p>Led multi-client hiring (Citi, Ford) with strong sourcing pipelines and stakeholder alignment.</p>
-</div>
+  <div id="k" class="tab-content card">
+    <p><b>KellyOCG — Senior IT Recruiter</b></p>
+    <p>Multi-client hiring (Citi, Ford). Delivery across niche and volume roles with strong pipelines and stakeholder alignment.</p>
+  </div>
 
-<div class="timeline-item">
-<h3>Sunrise Systems & Early Career (2013–2018)</h3>
-<p>Built strong foundation in technical recruitment, mentoring, and niche hiring across multiple organizations.</p>
-</div>
-
-</div>
-
+  <div id="e" class="tab-content card">
+    <p><b>Early Career (DynPro, IDC Technologies, Sunrise Systems)</b></p>
+    <p>Foundation in technical recruitment, sourcing, and candidate evaluation. Progression into mentoring and complex hiring ownership.</p>
+  </div>
 </section>
 
-<section class="section">
-<h2>Recognition & Achievements</h2>
-
-<div class="card">
-<p>🏆 Most Promising New Talent — TomTom</p>
-<p>🏆 Going the Extra Mile Award — KellyOCG</p>
-<p>🏆 Recruiter Honor Award — Sunrise Systems</p>
-<p>🏆 IBM Great Mind Challenge Winner</p>
-</div>
-
+<!-- TOOLS -->
+<section class="section reveal">
+  <h2 class="glow">Tools & Technologies</h2>
+  <div class="card">
+    <span class="tag">Lever ATS</span>
+    <span class="tag">Greenhouse</span>
+    <span class="tag">ChatGPT</span>
+    <span class="tag">Juicebox</span>
+    <span class="tag">Power BI</span>
+    <span class="tag">Talent Neuron</span>
+    <span class="tag">SeekOut</span>
+    <span class="tag">LinkedIn Recruiter</span>
+  </div>
 </section>
 
-<section class="section">
-<h2>What I Bring to the Table</h2>
+<!-- VALUE -->
+<section class="section reveal">
+  <h2 class="glow">What This Brings</h2>
+  <div class="acc">
 
-<div class="card">
-<p>✔ Ability to scale hiring like a system, not a process</p>
-<p>✔ Strong alignment with business goals & stakeholder expectations</p>
-<p>✔ Data-driven decision making using market intelligence tools</p>
-<p>✔ Early adoption of AI in recruitment workflows</p>
-<p>✔ Proven ability to handle niche + volume hiring simultaneously</p>
-</div>
+    <div class="acc-item">
+      <button class="acc-btn">Scalable Hiring Systems</button>
+      <div class="acc-content"><p>Structured approach combining AI, automation, and data to deliver predictable hiring outcomes at scale.</p></div>
+    </div>
 
+    <div class="acc-item">
+      <button class="acc-btn">Business-Aligned Hiring</button>
+      <div class="acc-content"><p>Close alignment with product, engineering, and business stakeholders to match hiring with growth priorities.</p></div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">Data-Driven Decisions</button>
+      <div class="acc-content"><p>Use of market intelligence (Power BI, Talent Neuron) to improve pipeline quality and selection accuracy.</p></div>
+    </div>
+
+    <div class="acc-item">
+      <button class="acc-btn">AI-Enabled Recruitment</button>
+      <div class="acc-content"><p>Application of ChatGPT and Juicebox for sourcing, outreach, and screening support to increase recruiter productivity.</p></div>
+    </div>
+
+  </div>
 </section>
 
-<section class="section">
-<h2>Contact</h2>
+<!-- EDUCATION -->
+<section class="section reveal">
+  <h2 class="glow">Education</h2>
+  <div class="card">
+    <p>Master’s Degree in Computer Science — University of Hertfordshire</p>
+    <p>Bachelor of Engineering in Information Science — GM Institute of Technology</p>
+  </div>
+</section>
 
-<div class="card">
-<p>Email: chaytonah@gmail.com</p>
-<p>Phone: +91-7338025205</p>
-<p><a href="https://www.linkedin.com/in/caholiyappa/">LinkedIn Profile</a></p>
+<!-- CONTACT -->
+<section class="section reveal">
+  <h2 class="glow">Contact</h2>
+  <div class="card">
+    <p>Email: chaytonah@gmail.com</p>
+    <p>Phone: +91-7338025205</p>
+    <p><a class="btn" href="https://www.linkedin.com/in/caholiyappa/">LinkedIn Profile</a></p>
+  </div>
+</section>
+
+<!-- RESUME MODAL -->
+<div id="resumeModal">
+  <div class="modal">
+    <button class="close" onclick="closeResume()">✕</button>
+    <a class="dl" href="resume.pdf" download>⬇ Download</a>
+    <iframe src="resume.pdf" width="100%" height="100%"></iframe>
+  </div>
 </div>
 
-</section>
+<script>
+// reveal on scroll
+const els = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:0.15});
+els.forEach(el=>io.observe(el));
+
+// bars
+document.querySelectorAll('.fill').forEach(el=>{
+  setTimeout(()=>{ el.style.width = el.dataset.width; }, 300);
+});
+
+// tabs
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tab).classList.add('active');
+  });
+});
+
+// accordion
+document.querySelectorAll('.acc-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const c = btn.nextElementSibling;
+    document.querySelectorAll('.acc-content').forEach(x=>{ if(x!==c) x.style.maxHeight=null; });
+    c.style.maxHeight = c.style.maxHeight ? null : c.scrollHeight + "px";
+  });
+});
+
+// modal
+function openResume(){ document.getElementById('resumeModal').style.display='flex'; }
+function closeResume(){ document.getElementById('resumeModal').style.display='none'; }
+</script>
 
 </body>
 </html>
